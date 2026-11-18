@@ -1,0 +1,9 @@
+[Unit]
+Description=Vice — vigilante: encola lo nuevo de las campañas activas
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/vice
+EnvironmentFile=-%h/vice/.env
+ExecStart=%h/vice/.venv/bin/python -m vice watch

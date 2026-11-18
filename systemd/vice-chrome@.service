@@ -1,0 +1,13 @@
+[Unit]
+Description=Vice — Chrome de la marca %i para Ghost (sesiones iniciadas a mano; control solo local)
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+WorkingDirectory=%h/vice
+ExecStart=%h/vice/.venv/bin/python -m vice ghost chrome %i
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=graphical-session.target

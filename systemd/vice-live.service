@@ -1,0 +1,15 @@
+[Unit]
+Description=Vice — ruta en vivo: graba los directos de campañas activas y corta los picos en caliente
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=%h/vice
+EnvironmentFile=-%h/vice/.env
+ExecStart=%h/vice/.venv/bin/python -m vice live
+Restart=always
+RestartSec=30
+# sin Nice: lo en vivo va antes que la cola de VODs (que corre con Nice=5)
+
+[Install]
+WantedBy=default.target

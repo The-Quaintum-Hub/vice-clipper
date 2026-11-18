@@ -1,0 +1,11 @@
+# Versiones probadas (Ubuntu 24.04, Python 3.12). Instalar con: .venv/bin/pip install -r requirements.txt
+yt-dlp==2026.10.26
+yt-dlp-ejs==0.8.0
+streamlink==8.6.3
+faster-whisper==1.2.1
+numpy==2.5.5
+opencv-python-headless==4.14.0.94
+PyYAML==6.0.3
+curl_cffi==0.17.0
+# solo para Ghost (publicar automático, opcional)
+playwright==1.65.2

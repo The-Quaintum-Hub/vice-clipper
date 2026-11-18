@@ -1,0 +1,14 @@
+[Unit]
+Description=Vice — bot de Telegram (revisión, enlaces, vistas)
+After=network-online.target
+ConditionPathExists=%h/vice/.env
+
+[Service]
+WorkingDirectory=%h/vice
+EnvironmentFile=%h/vice/.env
+ExecStart=%h/vice/.venv/bin/python -m vice bot
+Restart=always
+RestartSec=20
+
+[Install]
+WantedBy=default.target

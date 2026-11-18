@@ -1,0 +1,25 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Ghost</title>
+<style>
+  body { font: 20px/1.5 system-ui, sans-serif; background: #111; color: #eee; margin: 0; padding: 48px; }
+  h1 { font-size: 64px; margin: 0 0 8px; color: #f5c518; }
+  a { display: block; margin: 10px 0; padding: 14px 18px; background: #222; color: #fff; border-radius: 10px;
+      text-decoration: none; max-width: 520px; }
+  a:hover { background: #333; }
+  p { max-width: 640px; color: #bbb; }
+</style>
+<h1 id="marca">VICE</h1>
+<p>Este es el Chrome de Ghost para <b id="cuenta"></b>. Inicia sesión aquí con las cuentas de <b>esta marca</b>
+  (no las de la otra). No hace falta repetirlo: la sesión queda guardada. No cierres esta ventana.</p>
+<a href="https://www.tiktok.com/login" target="_blank">1 · TikTok</a>
+<a href="https://www.instagram.com/accounts/login/" target="_blank">2 · Instagram</a>
+<a href="https://studio.youtube.com/" target="_blank">3 · YouTube Studio (el canal de esta marca)</a>
+<a href="https://contentrewards.com/" target="_blank">4 · Content Rewards</a>
+<script>
+  const m = location.hash.slice(1);
+  const [n, c] = [(m || "vice").replace(/_/g, " ").toUpperCase(), ""];
+  document.getElementById("marca").textContent = n;
+  document.getElementById("cuenta").textContent = c;
+  document.title = n + " — Ghost";
+</script>

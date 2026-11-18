@@ -1,0 +1,17 @@
+# secretos y datos propios: NUNCA a git
+.env
+campaigns.yaml
+NOTAS-PAVILION.md
+# material de campañas y trabajo interno
+assets/*.png
+docs/
+bench/
+PLAN.md
+deploy.sh
+.frames/
+# entorno
+.venv/
+__pycache__/
+*.pyc
+logs/
+tests/test_campanas.py

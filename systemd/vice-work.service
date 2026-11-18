@@ -1,0 +1,15 @@
+[Unit]
+Description=Vice — procesa la cola de VODs (detectar, cortar, render)
+After=network-online.target ollama.service
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=%h/vice
+EnvironmentFile=-%h/vice/.env
+ExecStart=%h/vice/.venv/bin/python -m vice work
+Restart=always
+RestartSec=30
+Nice=5
+
+[Install]
+WantedBy=default.target

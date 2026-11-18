@@ -1,0 +1,14 @@
+[Unit]
+Description=Vice — Ghost: publica los clips aprobados y manda el enlace a Content Rewards
+After=network-online.target
+ConditionPathExists=%h/vice/.env
+
+[Service]
+WorkingDirectory=%h/vice
+EnvironmentFile=%h/vice/.env
+ExecStart=%h/vice/.venv/bin/python -m vice ghost
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,65 @@
+# campaigns.yaml — UNA entrada por campaña. Copia este archivo a campaigns.yaml y llénalo.
+# Solo se procesa lo que tenga `activa: true`. Los cambios se leen solos en cada paso (no hay que reiniciar).
+# `vice check` valida el archivo y te dice qué falta antes de que el sistema lo use.
+
+campaigns:
+  - id: ejemplo-streamer-es          # único, minúsculas, sin espacios
+    activa: false
+    plataforma_pago: content_rewards  # content_rewards | vyro | discord | clipster
+    enlace: https://ejemplo.com/campaña   # dónde está la campaña (referencia tuya)
+    tipo: streamer                    # streamer (VODs de su canal) | marca (material propio)
+    marca: cuenta_1                   # el nombre de una de tus cuentas (VICE_CUENTAS en .env)
+    fuentes:
+      - url: https://www.twitch.tv/CANAL          # Twitch, Kick o YouTube
+        # Recorte en FRACCIONES del cuadro (0 a 1): x,y = esquina sup. izq.; w,h = ancho, alto.
+        # `vice camara <url-de-un-VOD>` te sugiere esta línea (y te deja una foto para verificarla).
+        camara: {x: 0.74, y: 0.66, w: 0.26, h: 0.34}   # null si el streamer no usa cámara
+        # tramo: "00:45:50-fin"       # opcional: solo esa parte del VOD (HH:MM:SS-HH:MM:SS o -fin)
+        juego: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}       # opcional; por defecto el cuadro entero
+    juego_filtro: Grand Theft Auto    # opcional: solo VODs con este juego (capítulos de Twitch)
+    # juego: Fortnite               # opcional: nombre del juego si el video no lo dice (tráilers)
+    tarifa_por_mil: 1.00              # USD por cada 1.000 vistas; o por red: {tiktok: 2.0, instagram: 1.5}
+    minimo_vistas: 1000               # vistas mínimas para que el clip cobre
+    tope_por_clip: 250                # USD máximo que paga un clip
+    redes: [tiktok, youtube, instagram]   # + x
+    requisitos:
+      texto: |                        # pega acá el texto ORIGINAL de la campaña, tal cual
+        (texto original)
+      duracion_min: 15                # segundos
+      duracion_max: 60
+      hashtags: ["#gta6"]             # obligatorios, van en la descripción
+      menciones: ["@canal"]           # obligatorias, van en la descripción
+      marca_de_agua: null             # null | "texto que va en pantalla" | ruta a un .png en tu máquina
+      # --- opcionales ---
+      # divulgacion: "#Ad"            # FTC: sola en su línea, justo después del texto, PRIMER hashtag
+      # hashtags_max: 3               # hashtags permitidos además de la divulgación
+      # texto_obligatorio: ["twitch.tv/canal"]   # frases que deben ir en el texto (se agregan si faltan)
+      # adelanto: 5                   # streamers: abre con la frase del remate (2 s a este máximo; 0 lo apaga)
+      # facecam: true                 # el clip debe mostrar la cámara del streamer (pide `camara:` en la fuente)
+      # una_red_por_clip: true        # "same video on multiple accounts" prohibido: cada red recibe otro clip
+      # enviar_link_min: 30           # el bot te recuerda mandar el link a la plataforma antes de N minutos
+      # vocabulario: "NombreRaro, OtroNombre"   # nombres propios: whisper y el juez los escriben así
+      # reglas_juez: |                # reglas de la campaña para el juez IA, en inglés (las escribes tú)
+      #   - Never show the streamer in a negative light.
+      # recordatorios: ["Dejarlo publicado 30 días"]   # te llegan al aprobar (lo que no se puede verificar)
+
+  - id: ejemplo-marca-en
+    activa: false
+    plataforma_pago: vyro
+    tipo: marca
+    marca: cuenta_2
+    fuentes:                          # links (YouTube, Drive público, etc.) o rutas de archivos en tu máquina
+      - url: https://www.youtube.com/watch?v=XXXXXXXXXXX
+        camara: null
+    tarifa_por_mil: 0.50
+    minimo_vistas: 5000
+    tope_por_clip: 100
+    redes: [tiktok, youtube]
+    requisitos:
+      texto: |
+        (texto original)
+      duracion_min: 10
+      duracion_max: 45
+      hashtags: ["#ad"]
+      menciones: []
+      marca_de_agua: null

@@ -1,0 +1,10 @@
+[Unit]
+Description=Vice — biblioteca viral: clips de TikTok que pegaron (Apify, US$5/ciclo repartidos parejo)
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/vice
+EnvironmentFile=-%h/vice/.env
+Nice=10
+ExecStart=%h/vice/.venv/bin/python -m vice viral

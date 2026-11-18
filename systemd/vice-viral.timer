@@ -1,0 +1,10 @@
+[Unit]
+Description=Vice — biblioteca viral una vez al día (gasta solo lo que toca a la fecha)
+
+[Timer]
+OnCalendar=*-*-* 06:00
+RandomizedDelaySec=30min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
